@@ -9,19 +9,12 @@ function displayGifInfo() {
         url: queryURL,
         method: "GET"
     }).then(function(response) {
-        // console.log(response);
-        // console.log('response.data', response.data[0].rating);
-        // console.log('response.data', response.data);
         var gifHold = $("#gifs-view");
-
         $.each(response.data, function(index, obj) {
             gifHold.append('<div id="rating">Rating: ' + obj.rating);
             gifHold.append('<img id="img" src = "' + obj.images.original.url + '">');
             console.log(obj.images.original.url)
         })
-        // console.log(response.rating);
-        // gifHold.append('<div id="rating">Rating: ' + obj.rating);
-        // gifHold.append('<img id="img" src = "' + obj.images + '">');
     });
 }
 
@@ -38,15 +31,10 @@ function renderBtn() {
 
 $("#add-gif").on("click", function(event) {
     event.preventDefault();
-    console.log('in click')
-
     var gif = $("#gif-input").val().trim();
-    console.log('gif', gif)
-    
     gifs.push(gif);
     renderBtn()
 });
 
 $(document).on("click", ".gif", displayGifInfo);
-
 renderBtn();
