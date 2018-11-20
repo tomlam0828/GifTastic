@@ -18,6 +18,7 @@ function displayGifInfo() {
     });
 }
 
+
 function renderBtn() {
     $("#button1").empty();
     for (var i = 0; i <gifs.length; i++) {
@@ -38,3 +39,16 @@ $("#add-gif").on("click", function(event) {
 
 $(document).on("click", ".gif", displayGifInfo);
 renderBtn();
+$(document).on("click", "#img", function() {
+
+    var state = $(this).attr("data-state");
+
+    if (state === "still") {
+      $(this).attr("src", $(this).attr("data-animate"));
+      $(this).attr("data-state", "animate");
+    }
+    else {
+      $(this).attr("src", $(this).attr("data-still"));
+      $(this).attr("data-state", "still");
+    }
+  });
